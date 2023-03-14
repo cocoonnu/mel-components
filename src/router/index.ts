@@ -11,12 +11,22 @@ const routes: RouteRecordRaw[] = [
                 path: 'home',
                 name: 'home',
                 component: () => import('@/views/Home/index.vue')
+            },
+            {
+                path: 'icon',
+                name: 'icon',
+                component: () => import('@/views/ChooseIconP/index.vue')
+            },
+            {
+                path: 'messagelist',
+                name: 'messagelist',
+                component: () => import('@/views/MessageListP/index.vue')
             }
         ]
     },
     {
         path: '/',
-        redirect: '/container/home'
+        redirect: '/container/messagelist'
     }
 ]
 

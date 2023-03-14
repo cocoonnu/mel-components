@@ -3,7 +3,9 @@ const props = defineProps<{
     sideCollapse: boolean,
 }>()
 
-let emits = defineEmits(['update:sideCollapse'])
+const emits = defineEmits<{
+    (e: 'update:sideCollapse', sideCollapse: boolean): void
+}>()
 
 
 function toggle() {
@@ -28,4 +30,19 @@ function toggle() {
     padding: 0;
     border-bottom: 1px solid #eee;
 }
+
+.header {
+  height: 60px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+svg {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 10px;
+}
+
+
 </style>

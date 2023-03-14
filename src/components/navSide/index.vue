@@ -13,25 +13,28 @@ const props = defineProps<{
             :collapse="sideCollapse"
         >
             <el-menu-item index="1">
-                <template #title>Navigator Two</template>
+                <el-icon-menu></el-icon-menu>
+                <template #title>首页</template>
             </el-menu-item>
+
             <el-menu-item index="2">
-                <template #title>Navigator Two</template>
-            </el-menu-item>
-            <el-menu-item index="3">
-                <template #title>Navigator Two</template>
-            </el-menu-item>
-            <el-menu-item index="4">
-                <template #title>Navigator Two</template>
+                <el-icon-menu></el-icon-menu>
+                <template #title>图标选择器</template>
             </el-menu-item>
 
         </el-menu>                
     </el-aside>
 </template>
 
-<style>
+<style scoped>
 /* 侧边栏菜单展开时可固定宽度 */
 .el-aside-vertical:not(.el-menu--collapse) {
   width: 200px;
+}
+
+svg {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 10px;
 }
 </style>

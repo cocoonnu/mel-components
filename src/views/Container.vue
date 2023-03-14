@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import navHeader from '@/components/navHeader/index.vue'
-import navSide from '@/components/navSide/index.vue'
+import NavHeader from '@/components/NavHeader/index.vue'
+import NavSide from '@/components/NavSide/index.vue'
 import { ref } from 'vue'
 
 let sideCollapse = ref(false)
@@ -11,7 +11,7 @@ let sideCollapse = ref(false)
     <el-container>
         <nav-side :sideCollapse="sideCollapse"></nav-side>
 
-        <el-container>
+        <el-container class="header-main">
             <nav-header v-model:sideCollapse="sideCollapse"></nav-header>
             <el-main>
                 <router-view></router-view>
@@ -24,5 +24,9 @@ let sideCollapse = ref(false)
 <style>
 html, body, #app, .el-container, .el-menu {
     height: 100vh;
+}
+
+.header-main {
+    flex-direction: column;
 }
 </style>

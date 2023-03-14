@@ -6,6 +6,9 @@ import 'element-plus/dist/index.css'
 import * as Icons from '@element-plus/icons-vue'
 import './style.css'
 
+// 引入封装的组件库
+import mUI from './components/index'
+
 const app = createApp(App)
 
 for (let i in Icons) {

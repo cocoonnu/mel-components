@@ -1,0 +1,31 @@
+// 修改组件库内部的样式
+// 1. 由于每个组件的样式需要加上 scope
+// 2. 所以当要修改el组件库内部的样式时必须额外修改
+// 3. 因此使用自定义组件库需要把这个scss文件引入到app中
+
+
+// 图标选择器：修改弹出框样式
+.choose-icon-container {
+    .el-dialog {
+        min-width: 700px;
+    }
+
+    .el-dialog__body {
+        height: 500px;
+        overflow: scroll;
+    }    
+}
+
+
+// 消息列表：修改tab栏样式
+.messagelist-tab {
+    .el-tabs__nav {
+        width: 100%;
+        display: flex;
+    }
+
+    .el-tabs__item {
+        flex: 1;
+        text-align: center;
+    }
+}
