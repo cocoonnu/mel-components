@@ -18,19 +18,14 @@ function handleClick() {
 
 
 function clickIcon(iconName: string) {
-    navigator.clipboard.writeText(`<el-icon-${toLine(iconName)}/>`)
+    
+    navigator.clipboard.writeText(`<el-icon><${iconName} /></el-icon>`)
 
     ElMessage({
         message: `复制成功`,
         type: 'success',
         duration: 1000
     })
-}
-
-
-// 把驼峰转换成横杠连接
-function toLine(value: string) {
-    return value.replace(/(A-Z)g/, '-$1').toLocaleLowerCase()
 }
 
 </script>
@@ -48,7 +43,7 @@ function toLine(value: string) {
                 <div class="icon-item" v-for="item in Icons">
     
                     <div class="icon-svg" @click="clickIcon(item.name)">
-                        <component :is="`el-icon-${toLine(item.name)}`"></component>
+                        <component :is="item.name"></component>
                     </div>
     
                     <div class="icon-text">{{ item.name }}</div>
@@ -87,7 +82,7 @@ function toLine(value: string) {
 }
 
 .icon-text {
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 14px;
 }
 </style>

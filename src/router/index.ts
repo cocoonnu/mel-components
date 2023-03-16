@@ -15,18 +15,23 @@ const routes: RouteRecordRaw[] = [
             {
                 path: 'icon',
                 name: 'icon',
-                component: () => import('@/views/ChooseIconP/index.vue')
+                component: () => import('@/views/ChooseIcon/index.vue')
             },
             {
-                path: 'messagelist',
-                name: 'messagelist',
-                component: () => import('@/views/MessageListP/index.vue')
+                path: 'area',
+                name: 'area',
+                component: () => import('@/views/ChooseArea/index.vue')
+            },
+            {
+                path: 'time',
+                name: 'time',
+                component: () => import('@/views/ChooseTime/index.vue')
             }
         ]
     },
     {
         path: '/',
-        redirect: '/container/messagelist'
+        redirect: '/container/home'
     }
 ]
 

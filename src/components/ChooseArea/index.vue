@@ -91,6 +91,10 @@ watch(area, (newValue) => {
 
 <style scoped>
 .el-select {
-    margin: 0 10px;
+    margin: 0 5px;
+}
+
+.choose-area-container {
+    min-width: 700px;
 }
 </style>
