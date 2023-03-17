@@ -9,7 +9,15 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AButton: typeof import('ant-design-vue/es')['Button']
+    APopover: typeof import('ant-design-vue/es')['Popover']
+    ARadioButton: typeof import('ant-design-vue/es')['RadioButton']
+    ARadioGroup: typeof import('ant-design-vue/es')['RadioGroup']
+    ARate: typeof import('ant-design-vue/es')['Rate']
+    ASelect: typeof import('ant-design-vue/es')['Select']
+    ASelectOption: typeof import('ant-design-vue/es')['SelectOption']
     ChooseArea: typeof import('./src/components/ChooseArea/index.vue')['default']
+    ChooseCity: typeof import('./src/components/ChooseCity/index.vue')['default']
     ChooseData: typeof import('./src/components/ChooseData/index.vue')['default']
     ChooseDate: typeof import('./src/components/ChooseDate/index.vue')['default']
     ChooseIcon: typeof import('./src/components/ChooseIcon/index.vue')['default']
@@ -36,6 +44,7 @@ declare module '@vue/runtime-core' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElPopover: typeof import('element-plus/es')['ElPopover']
+    ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElTimeSelect: typeof import('element-plus/es')['ElTimeSelect']
     NavHeader: typeof import('./src/components/NavHeader/index.vue')['default']

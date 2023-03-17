@@ -2,12 +2,18 @@
 // 打包的入口文件
 
 import { App } from 'vue'
-import ChooseArea from './ChooseArea/index.vue'
-import ChooseIcon from './ChooseIcon/index.vue'
+import ChooseArea from './ChooseArea/index'
+import ChooseIcon from './ChooseIcon/index'
+import ChooseCity from './ChooseCity/index'
+import ChooseDate from './ChooseDate/index'
+import ChooseTime from './ChooseTime/index'
 
 const components = [
     ChooseArea,
-    ChooseIcon
+    ChooseIcon,
+    ChooseCity,
+    ChooseDate,
+    ChooseTime
 ]
 
 // 统一打包 app.use

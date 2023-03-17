@@ -1,15 +1,14 @@
 <script setup lang="ts">
-function getAreaData(areaData: any) {
-    console.log(areaData)
-}
+import { ref } from 'vue'
 
+let value = ref(2)
 </script>
 
 <template>
-    <!-- <choose-area @getAreaData="getAreaData"></choose-area> -->
     <notification :max="99" :value="100">
     </notification>
-    
+
+    <a-rate v-model:value="value" />
 </template>
 
 <style scoped>

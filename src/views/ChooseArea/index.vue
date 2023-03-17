@@ -7,6 +7,8 @@ function getAreaData(areaData: any) {
 
 <template>
     <choose-area @getAreaData="getAreaData"></choose-area>
+    <br>
+    <choose-city></choose-city>
 </template>
 
 <style scoped></style>

@@ -8,11 +8,17 @@ let startOptions = {
 function getTime(time: any) {
     console.log(time)
 }
+
+function getDate(date: any) {
+    console.log(date)
+}
+
 </script>
 
 <template>
     <choose-time @getTime="getTime" :startOptions="startOptions"></choose-time>
-    <choose-date></choose-date>
+    <br>
+    <choose-date @getDate="getDate"></choose-date>
 </template>
 
 <style scoped></style>

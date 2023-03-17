@@ -28,15 +28,57 @@ let props = defineProps({
 })
 
 
-let emits = defineEmits(['startChange', 'endChange'])
+let emits = defineEmits(['getDate'])
 
 
-// 设置禁用日期函数
-function disabledDate(time: Date) {
-    // console.log(time) // Sat Apr 08 2023 00:00:00 GMT+0800 (中国标准时间)
-    // time.getTime() 时间戳
+// 设置禁用开始日期函数
+function startDisabledDate(time: Date) {
+    
+    // 禁用当前日期之前的日期
+    if (props.disableToday) return time.getTime() < Date.now() - 1000 * 60 * 60 * 24
 }
 
+
+// 设置禁用结束日期函数
+function endDisabledDate(time: Date) {
+    // time 遍历的日期
+    // time.getTime() 遍历的日期的时间戳
+    // Date.now() 当前日期的时间戳
+
+    // 禁用开始日期之前的日期
+    if (startDate.value) {
+        return time.getTime() < startDate.value!.getTime() + 1000 * 60 * 60 * 24
+    }
+}
+
+
+watch(startDate, (newValue) => {
+
+    if (newValue) {
+        endDateDisabled.value = false
+    } else {
+        endDate.value = null
+        endDateDisabled.value = true
+    } 
+})
+
+
+watch(endDate, () => {
+
+    if (endDate.value && startDate.value) {
+
+        emits('getDate', {
+            startDate: startDate.value,
+            endDate: endDate.value
+        })
+    } else {
+
+        emits('getDate', {
+            startDate: null,
+            endDate: null
+        })
+    }
+})
 
 </script>
 
@@ -46,7 +88,16 @@ function disabledDate(time: Date) {
             v-model="startDate"
             type="date"
             :placeholder="startPlaceholder"
-            :disabled-date="disabledDate"
+            :disabled-date="startDisabledDate"
+            v-bind="$attrs.startOptions"
+        />        
+        <el-date-picker
+            v-model="endDate"
+            type="date"
+            :placeholder="endPlaceholder"
+            :disabled-date="endDisabledDate"
+            :disabled="endDateDisabled"
+            v-bind="$attrs.endOptions"
         />        
     </div>
 </template>

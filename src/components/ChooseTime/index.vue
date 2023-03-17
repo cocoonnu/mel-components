@@ -1,27 +1,3 @@
-<template>
-    <div class="time-range">
-        <el-time-select 
-            v-bind="$attrs.startOptions"
-            v-model="startValue"
-            :placeholder="startPlaceholder" 
-            :max-time="endValue" 
-            :start="startTimeStart"
-            :end="startTimeEnd" 
-            :step="step" 
-        />
-        
-        <el-time-select 
-            v-bind="$attrs.endOptions"
-            v-model="endValue" 
-            :placeholder="endPlaceholder" 
-            :min-time="startValue"
-            :start="endTimeStart"
-            :end="endTimeEnd" 
-            :step="step"
-        />
-    </div>
-</template>
-
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue'
 
@@ -77,14 +53,45 @@ let emits = defineEmits(['getTime'])
 watchEffect(() => {
 
     if (startValue.value && endValue.value) {
+
         emits('getTime', {
             startTime: startValue.value,
             endTime: endValue.value
+        })
+    } else {
+
+        emits('getTime', {
+            startTime: null,
+            endTime: null
         })
     }
 })
 
 </script>
+
+<template>
+    <div class="time-range">
+        <el-time-select 
+            v-bind="$attrs.startOptions"
+            v-model="startValue"
+            :placeholder="startPlaceholder" 
+            :max-time="endValue" 
+            :start="startTimeStart"
+            :end="startTimeEnd" 
+            :step="step" 
+        />
+        
+        <el-time-select 
+            v-bind="$attrs.endOptions"
+            v-model="endValue" 
+            :placeholder="endPlaceholder" 
+            :min-time="startValue"
+            :start="endTimeStart"
+            :end="endTimeEnd" 
+            :step="step"
+        />
+    </div>
+</template>
 
 <style lang="scss" scoped>
 .time-range {
