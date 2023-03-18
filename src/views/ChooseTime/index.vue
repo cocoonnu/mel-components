@@ -16,9 +16,22 @@ function getDate(date: any) {
 </script>
 
 <template>
-    <choose-time @getTime="getTime" :startOptions="startOptions"></choose-time>
-    <br>
-    <choose-date @getDate="getDate"></choose-date>
+    <div class="main-container">
+
+        <choose-date @getDate="getDate"></choose-date>
+        <br>
+        <br>
+        <choose-time @getTime="getTime" :startOptions="startOptions"></choose-time>
+
+    </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 20px;
+}
+</style>

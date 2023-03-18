@@ -7,13 +7,17 @@ import ChooseIcon from './ChooseIcon/index'
 import ChooseCity from './ChooseCity/index'
 import ChooseDate from './ChooseDate/index'
 import ChooseTime from './ChooseTime/index'
+import ModalForm from './ModalForm/index'
+import DialogForm from './DialogForm/index'
 
 const components = [
     ChooseArea,
     ChooseIcon,
     ChooseCity,
     ChooseDate,
-    ChooseTime
+    ChooseTime,
+    ModalForm,
+    DialogForm
 ]
 
 // 统一打包 app.use

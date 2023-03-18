@@ -45,7 +45,7 @@ let cityValue = ref(undefined)
 function clickTabs(letter: string) {
     
     const letterDom = document.getElementById(letter)
-    if (letterDom) letterDom.scrollIntoView({ behavior: "smooth", block: "center" })
+    if (letterDom) letterDom.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 
 
@@ -109,6 +109,7 @@ function openCard() {
             </a-select>
 
 
+            <!-- 按字母 -->
             <template v-if="accordingTo == 'letters'">
             <div class="choose-city-mian">
 
@@ -153,6 +154,8 @@ function openCard() {
             </div>
             </template>
 
+
+            <!-- 按省份 -->
             <template v-else>
             <div class="choose-city-mian">
 
@@ -175,18 +178,20 @@ function openCard() {
                         :key="index"
                     >
 
-                    <div class="city-content-title-pro" :id="item?.id">
-                        {{ item.name }}
-                    </div>
-
-                    <div class="city-content-text-pro">
-                        <div class="city-content-item-pro" 
-                            v-for="city in item.data"
-                            @click="clickCity(city)"
-                        >
-                            {{ city }}
+                        <!-- 字母标题 -->
+                        <div class="city-content-title-pro" :id="item?.id">
+                            {{ item.name }}
                         </div>
-                    </div>
+
+                        <!-- 城市名称 -->
+                        <div class="city-content-text-pro">
+                            <div class="city-content-item-pro" 
+                                v-for="city in item.data"
+                                @click="clickCity(city)"
+                            >
+                                {{ city }}
+                            </div>
+                        </div>
 
                     </div>                    
                 </el-scrollbar>                
@@ -262,19 +267,18 @@ function openCard() {
 
 
             .city-content-title-pro {
-                width: 8%;
+                width: 10%;
                 font-size: 14px;
                 cursor: default;
-                margin-top: -0.5px;
             }
 
             .city-content-text-pro {
-                width: 90%;
+                width: 88%;
                 display: flex;
                 justify-content: left;
                 flex-wrap: wrap;
-                gap: 10px;
-                margin-right: 5px;
+                gap: 8px;
+                margin-right: 3px;
                 
 
                 .city-content-item-pro {

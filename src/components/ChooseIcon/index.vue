@@ -1,22 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import * as Icons from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
 
 const props = defineProps<{
     title: string,
+    dialogVisible: boolean,
 }>()
 
 
-let visible = ref(false)
+let emits = defineEmits(['update:dialogVisible'])
 
 
-function handleClick() {
-    visible.value = true
-}
-
-
+// 当点击图标时
 function clickIcon(iconName: string) {
     
     navigator.clipboard.writeText(`<el-icon><${iconName} /></el-icon>`)
@@ -28,16 +25,27 @@ function clickIcon(iconName: string) {
     })
 }
 
+
+// 内部显示与隐藏
+let dialogVisibleIn = ref<boolean>(props.dialogVisible)
+
+
+watch(() => props.dialogVisible, (newValue) => {
+    dialogVisibleIn.value = newValue
+})
+
+watch(() => dialogVisibleIn.value, (newValue) => {
+    emits('update:dialogVisible', newValue)
+})
+
+
 </script>
 
 <template>
     <div class="choose-icon-container">
-        <el-button @click="handleClick" type="primary">
-            <slot></slot>
-        </el-button>
-    
+
         <!-- 弹出框 -->
-        <el-dialog :title="title" v-model="visible">
+        <el-dialog :title="title" v-model="dialogVisibleIn">
             <div class="icon-container">
     
                 <div class="icon-item" v-for="item in Icons">
@@ -52,6 +60,7 @@ function clickIcon(iconName: string) {
     
             </div>
         </el-dialog>        
+
     </div>
 </template>
 

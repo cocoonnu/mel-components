@@ -95,11 +95,11 @@ watchEffect(() => {
 
 <style lang="scss" scoped>
 .time-range {
-    min-width: 500px;
+    width: 500px;
     margin-bottom: 20px;
     
     .el-select {
-        margin-right: 5px;
+        margin-right: 10px;
     }
 }
 </style>

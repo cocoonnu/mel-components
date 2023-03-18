@@ -59,7 +59,8 @@ input {
 /* 垂直滚动条和水平滚动条时交汇的部分 */
 ::-webkit-scrollbar-corner {
     display: block;
-    background-color: rgba(0, 0, 0, 0.1);
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    background-color: transparent;
 }
 
 /* 滚动条上的滚动滑块 */

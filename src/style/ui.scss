@@ -1,6 +1,6 @@
 // 修改组件库内部的样式
 // 1. 由于每个组件的样式需要加上 scope
-// 2. 所以当要修改el组件库内部的样式时必须额外修改
+// 2. 所以当要修改el内部的样式（不加scope才能生效）时必须额外修改
 // 3. 因此使用自定义组件库需要把这个scss文件引入到app中
 
 
@@ -27,5 +27,30 @@
     .el-tabs__item {
         flex: 1;
         text-align: center;
+    }
+}
+
+
+// 表单生成器：修改错误文字提示
+.modal-form-container {
+    .el-form-item__error {
+        padding-top: 4px;
+    }
+
+    .el-form-item {
+        margin-bottom: 25px;
+    }
+}
+
+
+// 弹出框表单：修改弹出框样式
+.dialog-form-container {
+    .el-dialog {
+        min-width: 700px;
+    }
+
+    .el-dialog__body {
+        height: 550px;
+        overflow: scroll;
     }
 }

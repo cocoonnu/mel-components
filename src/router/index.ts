@@ -26,6 +26,16 @@ const routes: RouteRecordRaw[] = [
                 path: 'time',
                 name: 'time',
                 component: () => import('@/views/ChooseTime/index.vue')
+            },
+            {
+                path: 'form',
+                name: 'form',
+                component: () => import('@/views/ModalForm/index.vue')
+            },
+            {
+                path: 'dialogform',
+                name: 'dialogform',
+                component: () => import('@/views/DialogForm/index.vue')
             }
         ]
     },

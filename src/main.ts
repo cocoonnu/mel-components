@@ -10,6 +10,9 @@ import './style.css'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import mUI from './components/index'
+import mitt from 'mitt'
+
+const bus = mitt()
 
 const app = createApp(App)
 
@@ -26,5 +29,7 @@ app.use(ElementPlus, {
 app.use(Antd)
 
 app.use(mUI)
+
+app.config.globalProperties.$bus = bus
 
 app.mount('#app')

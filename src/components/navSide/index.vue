@@ -41,6 +41,16 @@ let activeIndex = ref(route.path)
                 <template #title>时间选择器</template>
             </el-menu-item>
 
+            <el-menu-item index="/container/form">
+                <el-icon><Document /></el-icon>
+                <template #title>表单生成器</template>
+            </el-menu-item>
+
+            <el-menu-item index="/container/dialogform">
+                <el-icon><ChatLineSquare /></el-icon>
+                <template #title>弹出框表单</template>
+            </el-menu-item>
+
         </el-menu>                
     </el-aside>
 </template>
