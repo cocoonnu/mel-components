@@ -83,7 +83,7 @@ watch(endDate, () => {
 </script>
 
 <template>
-    <div class="choose-date-container">
+    <div class="choose-date-container bigger-input">
         <el-date-picker
             v-model="startDate"
             type="date"
@@ -102,8 +102,12 @@ watch(endDate, () => {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style  lang="scss" >
 .choose-date-container {
-    width: 450px;
+    width: 500px;
+
+    .el-date-editor.el-input, .el-date-editor.el-input__wrapper {
+        margin-right: 12px;
+    }
 }
 </style>

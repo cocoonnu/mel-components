@@ -50,7 +50,17 @@
     }
 
     .el-dialog__body {
-        height: 550px;
+        height: 510px;
         overflow: scroll;
+    }
+}
+
+
+// 放大版选择框样式
+.bigger-input {
+    .el-input__wrapper {
+        width: 220px;
+        height: 40px;
+        margin-right: 2px;
     }
 }

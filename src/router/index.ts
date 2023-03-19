@@ -36,6 +36,11 @@ const routes: RouteRecordRaw[] = [
                 path: 'dialogform',
                 name: 'dialogform',
                 component: () => import('@/views/DialogForm/index.vue')
+            },
+            {
+                path: 'modaltable',
+                name: 'modaltable',
+                component: () => import('@/views/ModalTable/index.vue')
             }
         ]
     },

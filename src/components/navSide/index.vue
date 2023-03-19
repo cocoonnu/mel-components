@@ -51,6 +51,11 @@ let activeIndex = ref(route.path)
                 <template #title>弹出框表单</template>
             </el-menu-item>
 
+            <el-menu-item index="/container/modaltable">
+                <el-icon><PieChart /></el-icon>
+                <template #title>表格生成器</template>
+            </el-menu-item>
+
         </el-menu>                
     </el-aside>
 </template>

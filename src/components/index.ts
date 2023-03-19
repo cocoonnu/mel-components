@@ -9,6 +9,7 @@ import ChooseDate from './ChooseDate/index'
 import ChooseTime from './ChooseTime/index'
 import ModalForm from './ModalForm/index'
 import DialogForm from './DialogForm/index'
+import ModalTable from './ModalTable/index'
 
 const components = [
     ChooseArea,
@@ -17,7 +18,8 @@ const components = [
     ChooseDate,
     ChooseTime,
     ModalForm,
-    DialogForm
+    DialogForm,
+    ModalTable
 ]
 
 // 统一打包 app.use

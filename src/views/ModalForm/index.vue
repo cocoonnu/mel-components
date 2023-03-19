@@ -182,14 +182,16 @@ function getForm(formModel: any) {
 
 <template>
     <div class="form-container">
-        <!-- 自定义属性可去组件内部修改 -->
+
         <modal-form 
             :options="options" 
             @getForm="getForm" 
             :confirmButton="true"
             :cancelButton="true"
+            label-width="80px" 
         >
         </modal-form>
+
     </div>
 </template>
 

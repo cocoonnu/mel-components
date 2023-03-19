@@ -160,7 +160,6 @@ function cancelForm(formRef: FormInstance | undefined) {
         :rules="formRules"
         :validate-on-rule-change="false" 
         class="modal-form-container"
-        label-width="80px" 
         v-if="formModel != null"
     >
 

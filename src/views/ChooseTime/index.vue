@@ -17,12 +17,10 @@ function getDate(date: any) {
 
 <template>
     <div class="main-container">
-
         <choose-date @getDate="getDate"></choose-date>
         <br>
         <br>
         <choose-time @getTime="getTime" :startOptions="startOptions"></choose-time>
-
     </div>
 </template>
 

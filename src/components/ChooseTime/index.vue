@@ -70,7 +70,7 @@ watchEffect(() => {
 </script>
 
 <template>
-    <div class="time-range">
+    <div class="time-range bigger-input">
         <el-time-select 
             v-bind="$attrs.startOptions"
             v-model="startValue"

@@ -56,7 +56,7 @@ watch(area, (newValue) => {
 </script>
 
 <template>
-    <div class="choose-area-container">
+    <div class="choose-area-container bigger-input">
 
         <!-- 选择省 -->
         <el-select v-model="province" placeholder="请输入省份" clearable>
@@ -95,6 +95,6 @@ watch(area, (newValue) => {
 }
 
 .choose-area-container {
-    min-width: 700px;
+    width: 750px;
 }
 </style>
