@@ -56,6 +56,11 @@ let activeIndex = ref(route.path)
                 <template #title>表格生成器</template>
             </el-menu-item>
 
+            <el-menu-item index="/container/mocktable">
+                <el-icon><CopyDocument /></el-icon>
+                <template #title>表格分页栏</template>
+            </el-menu-item>
+
         </el-menu>                
     </el-aside>
 </template>

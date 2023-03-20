@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType, computed, ref, nextTick } from 'vue'
+import { PropType, computed, ref, nextTick, watch } from 'vue'
 import { TableOption } from './type/types'
 import { getCurrentInstance, onMounted, onBeforeUnmount } from 'vue'
 const cxt = getCurrentInstance()
@@ -16,6 +16,7 @@ onMounted(() => {
     bus.on('confirmEditRow', confirmEditRow)
     bus.on('cancelEditRow', cancelEditRow)
 })
+
 
 onBeforeUnmount(() => {
 
@@ -42,12 +43,19 @@ let props = defineProps({
 })
 
 
-// 同步表单数据
-let emits = defineEmits(['getTableData'])
+// 同步父组件表格数据
+let emits = defineEmits(['update:data'])
 
 
-// 表格数据（和表格已经双向绑定）
+// 表格数据
 let tableData = ref<any>(props.data)
+
+
+// 监听父组件的数据变化
+watch(() => props.data, (newValue) => {
+    tableData.value = newValue
+})
+
 
 // 过滤操作列和普通列
 let tableOptions = computed(() => {
@@ -88,7 +96,8 @@ function exitEdit() {
     editCell.value = ''
 
     // 同步表单数据
-    emits('getTableData', tableData.value)
+    // emits('getTableData', tableData.value)
+    emits('update:data', tableData.value)
 }
 
 
@@ -113,7 +122,8 @@ function deleteRow(scope: any) {
 
     tableData.value.splice(scope.$index, 1)
     // 同步表单数据
-    emits('getTableData', tableData.value)
+    // emits('getTableData', tableData.value)
+    emits('update:data', tableData.value)
 }
 
 
@@ -121,7 +131,8 @@ function deleteRow(scope: any) {
 function confirmEditRow() {
     editRowIndex.value = -1
     // 同步表单数据
-    emits('getTableData', tableData.value)
+    // emits('getTableData', tableData.value)
+    emits('update:data', tableData.value)
 }
 
 // 取消编辑表格行函数
@@ -212,11 +223,11 @@ function cancelEditRow(scope: any) {
 
         <!-- 操作列 -->
         <el-table-column 
-            v-if="settingOption"
-            :label="settingOption[0].label"
-            :align="settingOption[0].align"
-            :width="settingOption[0].width"
-            v-bind="settingOption[0].attrs"
+            v-if="settingOption?.length"
+            :label="settingOption[0]?.label"
+            :align="settingOption[0]?.align"
+            :width="settingOption[0]?.width"
+            v-bind="settingOption[0]?.attrs"
         >
 
             <!-- 设置自定义插槽（用户填写） -->

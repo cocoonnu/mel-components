@@ -2,9 +2,9 @@
 import { ref, computed } from 'vue'
 import { TableOption } from '@/components/ModalTable/type/types'
 import { getCurrentInstance, onMounted, onBeforeUnmount } from 'vue'
+import { ElMessage } from 'element-plus'
 const cxt = getCurrentInstance()
 const bus = cxt!.appContext.config.globalProperties.$bus
-
 
 
 let options: TableOption[] = [
@@ -19,6 +19,7 @@ let options: TableOption[] = [
         prop: 'name',
         label: '姓名',
         align: 'center',
+        slot: 'name'
     },
     {
         prop: 'address',
@@ -34,7 +35,7 @@ let options: TableOption[] = [
         align: 'center',
     },
 ]
-
+ 
 
 // 初始化表单的数据
 let tableData = ref<any>(
@@ -62,16 +63,21 @@ let tableData = ref<any>(
     ]    
 )
 
-function getTableData(data: any) {
-    tableData.value = data
-}
 
 function showTableData() {
+
+    ElMessage({
+        message: `请在控制台查看`,
+        type: 'success',
+        duration: 1000
+    })
+
     console.log(tableData.value)
 }
 
-let loading = ref(true)
 
+// 设置加载
+let loading = ref(true)
 setTimeout(() => {
 
     loading.value = false
@@ -81,7 +87,7 @@ setTimeout(() => {
 // - 如果有操作项则需要填写 -
 
 // 是否进入编辑行状态
-let isEditRow = ref<Boolean>(false)
+let editRowIndex = ref<Number>(-1)
 
 
 // 点击编辑按钮
@@ -91,7 +97,7 @@ function editRow(scope: any) {
     bus.emit('editRow', scope)
 
     // 改变操作项按钮
-    isEditRow.value = true
+    editRowIndex.value = scope.$index
 }
 
 // 点击删除按钮
@@ -103,13 +109,13 @@ function deleteRow(scope: any) {
 // 确认按钮
 function confirmEditRow() {
     bus.emit('confirmEditRow')
-    isEditRow.value = false
+    editRowIndex.value = -1
 }
 
 // 取消按钮
 function cancelEditRow(scope: any) {
     bus.emit('cancelEditRow', scope)
-    isEditRow.value = false
+    editRowIndex.value = -1
 }
 
 // - 如果有操作项则需要填写 -
@@ -119,19 +125,18 @@ function cancelEditRow(scope: any) {
 <template>
     <ModalTable 
         :option="options" 
-        :data="tableData" 
+        v-model:data="tableData" 
         stripe v-loading="loading"
-        @getTableData="getTableData"
     >
     
         <!-- 填写操作项 -->
         <template #setting="{ scope }">
 
             <!-- 未进入编辑行状态的按钮 -->
-            <template v-if="!isEditRow">
+            <template v-if="scope.$index != editRowIndex">
                 <el-button
                     size="small" 
-                    @click="editRow(scope)"
+                    @click.stop="editRow(scope)"
                 >编辑</el-button>
     
                 <el-button
@@ -143,7 +148,7 @@ function cancelEditRow(scope: any) {
 
 
             <!-- 进入编辑行状态的按钮 -->
-            <template v-if="isEditRow">
+            <template v-if="scope.$index == editRowIndex">
                 <el-button
                     size="small" 
                     @click="confirmEditRow()"
@@ -165,6 +170,21 @@ function cancelEditRow(scope: any) {
             <span style="margin-left: 10px">{{ scope.row.date }}</span>
         </template>
         
+
+        <!-- 填写 姓名 自定义列模板 -->
+        <template #name="{ scope }">
+            <el-popover effect="light" trigger="hover" placement="top" width="auto">
+                <template #default>
+                    <div>name: {{ scope.row.name }}</div>
+                    <div>address: {{ scope.row.address }}</div>
+                </template>
+
+                <template #reference>
+                    <el-tag class="name-tag">{{ scope.row.name }}</el-tag>
+                </template>
+            </el-popover>
+        </template>        
+
     </ModalTable>
 
     <el-button @click="showTableData" type="primary" class="show-btn">
@@ -183,5 +203,9 @@ function cancelEditRow(scope: any) {
 
 .show-btn {    
     margin-top: 50px;
+}
+
+.name-tag {
+    cursor: default;
 }
 </style>

@@ -11,6 +11,7 @@ import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import mUI from './components/index'
 import mitt from 'mitt'
+import './mock/index'
 
 const bus = mitt()
 

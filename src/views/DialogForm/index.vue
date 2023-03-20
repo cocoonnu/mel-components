@@ -198,6 +198,7 @@ function getFormData(formModel: any) {
         title="弹出框表单"
         @getFormData="getFormData"
         :options="options"
+        label-width="80px" 
     >
     </dialog-form>
 </template>

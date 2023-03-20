@@ -41,6 +41,11 @@ const routes: RouteRecordRaw[] = [
                 path: 'modaltable',
                 name: 'modaltable',
                 component: () => import('@/views/ModalTable/index.vue')
+            },
+            {
+                path: 'mocktable',
+                name: 'mocktable',
+                component: () => import('@/views/MockTable/index.vue')
             }
         ]
     },

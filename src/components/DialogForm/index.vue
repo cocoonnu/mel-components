@@ -42,6 +42,7 @@ function getForm(formModel: any) {
                 :confirmButton="true"
                 :cancelButton="true"
                 @getForm="getForm" 
+                v-bind="$attrs"
             >
             </modal-form>
 
