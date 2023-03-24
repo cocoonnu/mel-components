@@ -22,7 +22,7 @@ let sideCollapse = ref(false)
 </template>
 
 <style>
-html, body, #app, .el-container, .el-menu {
+html, body, #app, .el-container {
     height: 100vh;
 }
 

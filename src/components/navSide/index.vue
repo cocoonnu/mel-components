@@ -21,6 +21,9 @@ let activeIndex = ref(route.path)
             class="el-aside-vertical"
             :collapse="sideCollapse"
         >
+
+            <div class="el-aside-list">
+
             <el-menu-item index="/container/home">
                 <el-icon><ElementPlus /></el-icon>
                 <template #title>首页</template>
@@ -61,6 +64,12 @@ let activeIndex = ref(route.path)
                 <template #title>表格分页栏</template>
             </el-menu-item>
 
+            <el-menu-item index="/container/calendar">
+                <el-icon><Calendar /></el-icon>
+                <template #title>日历编辑框</template>
+            </el-menu-item>
+
+            </div>
         </el-menu>                
     </el-aside>
 </template>
@@ -72,6 +81,17 @@ let activeIndex = ref(route.path)
 }
 
 .aside-container {
+    height: 100%;
+
+    .el-menu {
+        height: 100%;
+    }
+
+    .el-aside-list {
+        position: relative;
+        top: 10px;
+    }
+
     .el-menu .el-icon {
         margin: -2px 5px 0 0;
     }

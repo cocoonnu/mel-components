@@ -46,6 +46,11 @@ const routes: RouteRecordRaw[] = [
                 path: 'mocktable',
                 name: 'mocktable',
                 component: () => import('@/views/MockTable/index.vue')
+            },
+            {
+                path: 'calendar',
+                name: 'calendar',
+                component: () => import('@/views/FullCalendar/index.vue')
             }
         ]
     },

@@ -11,6 +11,7 @@ import DialogForm from './DialogForm/index'
 import ModalTable from './ModalTable/index'
 import Pagination from './Pagination/index'
 import ModalForm from './ModalForm/index'
+import FullCalendar from './FullCalendar/index'
 
 const components = [
     ChooseArea,
@@ -21,7 +22,8 @@ const components = [
     ModalForm,
     DialogForm,
     ModalTable,
-    Pagination
+    Pagination,
+    FullCalendar
 ]
 
 // 统一打包 app.use
