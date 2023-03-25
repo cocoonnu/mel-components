@@ -7,8 +7,8 @@ export interface FormOptions {
 
     // 支持多选、单选、输入框、评分、选择器、滑块、开关、上传等组件
     type: 'checkbox' | 'checkbox-group' | 'checkbox-button' | 'input' | 'input-number' 
-        | 'radio' | 'radio-group' | 'radio-button' | 'rate' |'select' | 'option' 
-        | 'slider' | 'switch' | 'upload' | 'editor',
+    | 'radio' | 'radio-group' | 'radio-button' | 'rate' |'select' | 'option' 
+    | 'slider' | 'switch' | 'upload' | 'editor' | 'time-select',
 
     // 表单项的初始值
     value?: any,

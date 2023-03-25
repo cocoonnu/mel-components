@@ -31,9 +31,9 @@ function getForm(formModel: any) {
 </script>
 
 <template>
-    <div class="dialog-form-container">
+    <div class="dialog-form-container" v-bind="$attrs">
 
-        <el-dialog v-model="dialogVisibleIn" :title="title" draggable center>
+        <el-dialog v-model="dialogVisibleIn" :title="title" draggable v-bind="$attrs">
 
             <!-- form表单 -->
             <modal-form 
